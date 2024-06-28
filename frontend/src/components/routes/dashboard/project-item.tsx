@@ -12,11 +12,13 @@ type ProjectProps = {
 
 export const ProjectItem = ({ title, description }: ProjectProps) => {
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="text-xl">{title}</CardTitle>
-        <CardDescription>{description}</CardDescription>
-      </CardHeader>
-    </Card>
+    <a className="duration-200 hover:opacity-70" href={`/projects/${title}`}>
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-xl">{title}</CardTitle>
+          <CardDescription>{description}</CardDescription>
+        </CardHeader>
+      </Card>
+    </a>
   );
 };
