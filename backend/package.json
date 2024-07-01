@@ -1,6 +1,9 @@
 {
   "name": "backend",
   "module": "index.ts",
+  "scripts": {
+    "dev": "bun run --hot index.ts"
+  },
   "type": "module",
   "devDependencies": {
     "bun-types": "latest"
