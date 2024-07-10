@@ -1,18 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./tailwind.css";
-import Root from "./routes/root/index.tsx";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Root />,
-  },
-]);
+import { BrowserRouter } from "react-router-dom";
+import App from "./app/index.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
