@@ -5,7 +5,7 @@ export const projects = pgTable("projects", {
   name: varchar("name").notNull(),
   description: varchar("description"),
   status: varchar("status").notNull().default("active"), // active, inactive, paused
-  startDate: date("start_date").notNull(),
+  startDate: date("start_date").notNull().defaultNow(),
   endDate: date("end_date"),
   priority: varchar("priority"), // low, medium, high
   mood: varchar("mood").notNull().default("neutral"), // neutral, happy, sad
