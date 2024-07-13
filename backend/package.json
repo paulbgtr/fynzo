@@ -1,8 +1,8 @@
 {
   "name": "backend",
-  "module": "server.ts",
+  "module": "./src/server.ts",
   "scripts": {
-    "dev": "bun run --hot server.ts"
+    "dev": "bun run --hot ./src/server.ts"
   },
   "type": "module",
   "devDependencies": {
