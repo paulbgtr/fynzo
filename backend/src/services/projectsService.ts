@@ -14,6 +14,10 @@ export class ProjectsService {
   }
 
   async createProject(project: Project) {
+    if (project.name === "") {
+      throw new Error("Project name cannot be empty");
+    }
+
     return await db.insert(projects).values(project).returning();
   }
 

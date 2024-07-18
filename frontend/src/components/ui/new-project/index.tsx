@@ -31,6 +31,7 @@ const NewProjectForm = () => {
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          required
           placeholder="Name"
           className="w-full input input-bordered"
         />
