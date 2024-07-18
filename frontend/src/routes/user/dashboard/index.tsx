@@ -1,3 +1,4 @@
+import Loading from "../../../components/ui/loading";
 import { useQuery } from "@tanstack/react-query";
 import DashboardLayout from "../../../components/layouts/dashboard-layout";
 import ProjectItems from "../../../components/containers/project-items";
@@ -16,7 +17,7 @@ const Dashboard = () => {
         <p className="text-lg">Here are your projects:</p>
       </header>
 
-      {isLoading ? <p>Loading...</p> : <ProjectItems projects={projects} />}
+      {isLoading ? <Loading /> : <ProjectItems projects={projects} />}
     </DashboardLayout>
   );
 };
