@@ -1,18 +1,69 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { createProject } from "../../../api/projects";
+
+const NewProjectForm = () => {
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+
+  const mutation = useMutation({
+    mutationFn: createProject,
+    onSuccess: () => console.log("Project created!"),
+  });
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    mutation.mutate({
+      name: name,
+      description: description,
+    });
+
+    setName("");
+    setDescription("");
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div className="flex flex-col gap-2">
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Name"
+          className="w-full input input-bordered"
+        />
+        <input
+          type="text"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="Description"
+          className="w-full input input-bordered"
+        />
+        <button className="btn">Create</button>
+      </div>
+    </form>
+  );
+};
 
 const NewProject = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <Link
-      to="/projects/new"
-      className="transition-opacity duration-300 hover:opacity-80"
-    >
+    <button onClick={() => setIsOpen(true)}>
       <div className="card bg-primary text-primary-content">
         <div className="text-center card-body">
-          <span className="text-5xl">+</span>
-          <p>Create a new one</p>
+          {isOpen ? (
+            <NewProjectForm />
+          ) : (
+            <>
+              <span className="text-5xl">+</span>
+              <p>Create a new one</p>
+            </>
+          )}
         </div>
       </div>
-    </Link>
+    </button>
   );
 };
 
