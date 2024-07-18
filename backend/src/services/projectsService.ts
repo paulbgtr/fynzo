@@ -2,6 +2,8 @@ import { eq } from "drizzle-orm";
 import db from "../db/db";
 import { projects } from "../db/schemas";
 
+type Project = typeof projects.$inferInsert;
+
 export class ProjectsService {
   async getAllProjects() {
     return await db.select().from(projects);
@@ -11,11 +13,11 @@ export class ProjectsService {
     return await db.select().from(projects).where(eq(projects.id, id));
   }
 
-  async createProject(project: any) {
+  async createProject(project: Project) {
     return await db.insert(projects).values(project).returning();
   }
 
-  async updateProject(id: number, project: any) {
+  async updateProject(id: number, project: Project) {
     return await db
       .update(projects)
       .set(project)
