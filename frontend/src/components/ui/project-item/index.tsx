@@ -5,7 +5,7 @@ const ProjectItem = ({ name }: { name: string }) => {
     // todo: add useful link
     <Link
       className="transition-opacity duration-300 hover:opacity-80"
-      to={`/projects/${name}`}
+      to={`/user/projects/${name}`}
     >
       <div className="card bg-primary text-primary-content">
         <div className="card-body">
