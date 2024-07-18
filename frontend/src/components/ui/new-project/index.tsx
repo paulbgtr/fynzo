@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { createProject } from "../../../api/projects";
+import { queryClient } from "../../../app/config/queryClient";
 
 const NewProjectForm = () => {
   const [name, setName] = useState("");
@@ -8,7 +9,7 @@ const NewProjectForm = () => {
 
   const mutation = useMutation({
     mutationFn: createProject,
-    onSuccess: () => console.log("Project created!"),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["projects"] }),
   });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
