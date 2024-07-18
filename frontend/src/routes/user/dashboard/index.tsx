@@ -1,34 +1,14 @@
+import { useQuery } from "@tanstack/react-query";
 import DashboardLayout from "../../../components/layouts/dashboard-layout";
 import ProjectItems from "../../../components/containers/project-items";
-
-const projects = [
-  {
-    id: 1,
-    title: "Project 1",
-  },
-  {
-    id: 2,
-    title: "Project 2",
-  },
-  {
-    id: 3,
-    title: "Project 3",
-  },
-  {
-    id: 4,
-    title: "Project 4",
-  },
-  {
-    id: 5,
-    title: "Project 5",
-  },
-  {
-    id: 6,
-    title: "Project 6",
-  },
-];
+import { fetchAllProjects } from "../../../api/projects";
 
 const Dashboard = () => {
+  const { data: projects, isLoading } = useQuery({
+    queryKey: ["projects"],
+    queryFn: fetchAllProjects,
+  });
+
   return (
     <DashboardLayout>
       <header className="mb-3 space-y-2">
@@ -36,7 +16,7 @@ const Dashboard = () => {
         <p className="text-lg">Here are your projects:</p>
       </header>
 
-      <ProjectItems projects={projects} />
+      {isLoading ? <p>Loading...</p> : <ProjectItems projects={projects} />}
     </DashboardLayout>
   );
 };
