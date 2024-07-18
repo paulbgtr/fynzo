@@ -1,8 +1,8 @@
 const Root = () => {
   return (
-    <div>
+    <main>
       <h1>Root</h1>
-    </div>
+    </main>
   );
 };
 
