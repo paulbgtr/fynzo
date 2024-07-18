@@ -10,7 +10,7 @@ const ProjectItems = ({
     <section className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
       <NewProject />
       {projects.map((project: any) => (
-        <ProjectItem key={project.id} title={project.title} />
+        <ProjectItem key={project.id} name={project.name} />
       ))}
     </section>
   );
