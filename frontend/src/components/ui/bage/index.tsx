@@ -1,4 +1,4 @@
-type Style =
+export type BadgeStyle =
   | "primary"
   | "secondary"
   | "success"
@@ -6,18 +6,25 @@ type Style =
   | "warning"
   | "info"
   | "neutral"
-  | "accent";
+  | "accent"
+  | "ghost";
 
 type BadgeProps = {
-  text: string;
-  style?: Style;
+  style?: BadgeStyle;
   isOutlined?: boolean;
+  children: React.ReactNode;
 };
 
-const Badge = ({ text, style, isOutlined }: BadgeProps) => {
+const Badge = ({
+  style = "neutral",
+  isOutlined = false,
+  children,
+}: BadgeProps) => {
   return (
-    <span className={`badge badge-${style} ${isOutlined && "badge-outline"}`}>
-      {text}
+    <span
+      className={`badge badge-${style} ${isOutlined ? "badge-outline" : ""}`}
+    >
+      {children}
     </span>
   );
 };
