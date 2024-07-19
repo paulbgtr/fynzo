@@ -15,18 +15,18 @@ type BadgeProps = {
   children: React.ReactNode;
 };
 
-const Badge = ({
+export const Badge = ({
   style = "neutral",
   isOutlined = false,
   children,
 }: BadgeProps) => {
   return (
     <span
-      className={`badge badge-${style} ${isOutlined ? "badge-outline" : ""}`}
+      className={`badge badge-lg badge-${style} ${
+        isOutlined ? "badge-outline" : ""
+      }`}
     >
       {children}
     </span>
   );
 };
-
-export default Badge;
