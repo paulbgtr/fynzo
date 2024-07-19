@@ -12,7 +12,11 @@ export const fetchAllProjects = async () => {
   return checkResponse(response);
 };
 
-export const fetchProjectById = async (id: number) => {
+export const fetchProjectById = async (id: string | undefined) => {
+  if (!id) {
+    throw new Error("No project ID provided");
+  }
+
   const response = await fetch(`${API_URL}/${id}`, {
     method: "GET",
     headers: {
