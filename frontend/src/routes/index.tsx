@@ -1,7 +1,7 @@
 import NotFound from "./errors/not-found";
 import Root from "./root";
 import Dashboard from "./user/dashboard";
-import ProjectPage from "./user/dashboard/project-page";
+import ProjectPage from "./user/project-page";
 
 import { Routes, Route } from "react-router-dom";
 
